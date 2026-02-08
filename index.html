@@ -1,35 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        .hidden { display: none; }
-        .button { padding: 15px 30px; margin: 20px; font-size: 1.2em; cursor: pointer; border-radius: 8px; border: none; background: #f0c419; color: #222; }
-        .button:hover { background: #ffd700; }
-        img { margin-top: 30px; max-width: 300px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>És loira?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .hidden { display: none; }
+    .button {
+      padding: 15px 30px;
+      margin: 20px;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 8px;
+      border: none;
+      background: #f0c419;
+      color: #222;
+    }
+    .button:hover { background: #ffd700; }
+    img { margin-top: 30px; max-width: 300px; }
+  </style>
 </head>
+
 <body>
-    <h1>És loira?</h1>
-    <button class="button" id="sim">Sim</button>
-    <button class="button" id="nao">Não</button>
-    <div id="resposta" class="hidden">
-        <h2>Sou Loirassexual</h2>
-        <!-- Substitua o caminho abaixo pela imagem desejada -->
-        <img id="imagem" src="imagem.jpg" alt="imagem.jpg">
-    </div>
-    <script>
-        document.getElementById('sim').onclick = function() {
-            window.location.href = 'https://www.instagram.com/helder.27_/';
-        };
-        document.getElementById('nao').onclick = function() {
-            document.getElementById('resposta').classList.remove('hidden');
-            document.getElementById('sim').style.display = 'none';
-            document.getElementById('nao').style.display = 'none';
-            document.querySelector('h1').style.display = 'none';
-        };
-    </script>
+
+  <h1 id="pergunta">És loira?</h1>
+
+  <button class="button" id="sim">Sim</button>
+  <button class="button" id="nao">Não</button>
+
+  <div id="resposta" class="hidden">
+    <h2>Sou Loirassexual</h2>
+    <img src="imagem.jpg" alt="imagem">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      document.getElementById('sim').onclick = function () {
+        window.location.href = 'https://www.instagram.com/helder.27_/';
+      };
+
+      document.getElementById('nao').onclick = function () {
+        document.getElementById('resposta').classList.remove('hidden');
+        document.getElementById('sim').style.display = 'none';
+        document.getElementById('nao').style.display = 'none';
+        document.getElementById('pergunta').style.display = 'none';
+      };
+
+    });
+  </script>
+
 </body>
 </html>
