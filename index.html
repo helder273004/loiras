@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    <h1>És loira?</h1>
+    <h1 id="pergunta">És loira?</h1>
     <button class="button" id="sim">Sim</button>
     <button class="button" id="nao">Não</button>
     <div id="resposta" class="hidden">
@@ -29,8 +29,10 @@
             document.getElementById('resposta').classList.remove('hidden');
             document.getElementById('sim').style.display = 'none';
             document.getElementById('nao').style.display = 'none';
-            document.querySelector('h1').style.display = 'none';
+            document.getElementById('pergunta').style.display = 'none';
+        };
         };
     </script>
 </body>
 </html>
+
