@@ -3,56 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>És loira?</title>
+  <title>Pergunta importante</title>
+
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fff3d6, #ffd6e0);
+      color: #333;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(10px);
+      padding: 40px 50px;
+      border-radius: 22px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
       text-align: center;
-      margin-top: 50px;
+      max-width: 420px;
+      width: 90%;
     }
-    .hidden { display: none; }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-weight: 400;
+      opacity: 0.85;
+      margin-top: 0;
+      font-size: 1.3em;
+    }
+
     .button {
-      padding: 15px 30px;
-      margin: 20px;
-      font-size: 1.2em;
+      padding: 14px 32px;
+      margin: 12px;
+      font-size: 1.05em;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 14px;
       border: none;
-      background: #f0c419;
+      background: #ffb703;
       color: #222;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
-    .button:hover { background: #ffd700; }
-    img { margin-top: 30px; max-width: 300px; }
+
+    .button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .button:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .cta {
+      background: #ff4d6d;
+      color: white;
+      margin-top: 25px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .resposta-texto {
+      font-size: 1.4em;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+
+    img {
+      margin-top: 20px;
+      max-width: 240px;
+      border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+    }
+
+    .fade {
+      animation: popIn 0.5s ease forwards;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
   </style>
 </head>
 
 <body>
 
-  <h1 id="pergunta">És loira?</h1>
+  <div class="card">
+    <h1 id="pergunta">Pergunta importante</h1>
+    <h2 id="sub">És loira?</h2>
 
-  <button class="button" id="sim">Sim</button>
-  <button class="button" id="nao">Não</button>
+    <button class="button" id="sim">Sim</button>
+    <button class="button" id="nao">Não</button>
 
-  <div id="resposta" class="hidden">
-    <h2>Sou Loirassexual</h2>
-    <img src="imagem.jpg" alt="imagem">
+    <div id="resposta" class="hidden fade">
+      <div id="texto" class="resposta-texto"></div>
+      <img src="imagem.jpg" alt="foto">
+      <br>
+      <button class="button cta" onclick="irInsta()">Aperta para uma surpresa</button>
+    </div>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('sim').onclick = function () {
+      window.location.href = "https://www.instagram.com/helder.27_/";
+    };
 
-      document.getElementById('sim').onclick = function () {
-        window.location.href = 'https://www.instagram.com/helder.27_/';
-      };
+    document.getElementById('nao').onclick = function () {
+      document.getElementById('pergunta').style.display = 'none';
+      document.getElementById('sub').style.display = 'none';
+      document.getElementById('sim').style.display = 'none';
+      document.getElementById('nao').style.display = 'none';
 
-      document.getElementById('nao').onclick = function () {
-        document.getElementById('resposta').classList.remove('hidden');
-        document.getElementById('sim').style.display = 'none';
-        document.getElementById('nao').style.display = 'none';
-        document.getElementById('pergunta').style.display = 'none';
-      };
+      document.getElementById('texto').innerHTML = "Uma pena... mas podes tentar a tua sorte";
+      document.getElementById('resposta').classList.remove('hidden');
+    };
 
-    });
+    function irInsta() {
+      window.location.href = "https://www.instagram.com/helder.27_/";
+    }
   </script>
 
 </body>
