@@ -61,11 +61,6 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
-    .button:active {
-      transform: translateY(1px) scale(0.98);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
     .cta {
       background: #ff4d6d;
       color: white;
@@ -102,22 +97,57 @@
 
 <body>
 
-  <div class="card">
-    <h1 id="pergunta">Pergunta importante</h1>
-    <h2 id="sub">És loira?</h2>
+  <!-- Escolha de idioma -->
+  <div class="card" id="langSelect">
+    <h1>Escolhe o idioma</h1>
+    <button class="button" onclick="setLang('pt')">🇵🇹 Português</button>
+    <button class="button" onclick="setLang('en')">🇬🇧 English</button>
+  </div>
 
-    <button class="button" id="sim">Sim</button>
-    <button class="button" id="nao">Não</button>
+  <!-- Conteúdo principal -->
+  <div class="card hidden" id="mainCard">
+    <h1 id="pergunta"></h1>
+    <h2 id="sub"></h2>
+
+    <button class="button" id="sim"></button>
+    <button class="button" id="nao"></button>
 
     <div id="resposta" class="hidden fade">
       <div id="texto" class="resposta-texto"></div>
       <img src="imagem.jpg" alt="foto">
       <br>
-      <button class="button cta" onclick="irInsta()">Aperta para uma surpresa</button>
+      <button class="button cta" id="cta" onclick="irInsta()"></button>
     </div>
   </div>
 
   <script>
+    let idioma = "pt";
+
+    function setLang(lang) {
+      idioma = lang;
+
+      // esconder seleção
+      document.getElementById('langSelect').classList.add('hidden');
+
+      // mostrar conteúdo
+      document.getElementById('mainCard').classList.remove('hidden');
+
+      // textos
+      if (lang === "pt") {
+        document.getElementById('pergunta').innerText = "Pergunta importante";
+        document.getElementById('sub').innerText = "És loira?";
+        document.getElementById('sim').innerText = "Sim";
+        document.getElementById('nao').innerText = "Não";
+        document.getElementById('cta').innerText = "Aperta para uma surpresa";
+      } else {
+        document.getElementById('pergunta').innerText = "Important question";
+        document.getElementById('sub').innerText = "Are you blonde?";
+        document.getElementById('sim').innerText = "Yes";
+        document.getElementById('nao').innerText = "No";
+        document.getElementById('cta').innerText = "Click for a surprise";
+      }
+    }
+
     document.getElementById('sim').onclick = function () {
       window.location.href = "https://www.instagram.com/helder.27_/";
     };
@@ -128,7 +158,12 @@
       document.getElementById('sim').style.display = 'none';
       document.getElementById('nao').style.display = 'none';
 
-      document.getElementById('texto').innerHTML = "Uma pena... mas podes tentar a tua sorte";
+      if (idioma === "pt") {
+        document.getElementById('texto').innerHTML = "Uma pena... mas podes tentar a tua sorte";
+      } else {
+        document.getElementById('texto').innerHTML = "That's a shame... but you can try your luck";
+      }
+
       document.getElementById('resposta').classList.remove('hidden');
     };
 
